@@ -1,0 +1,19 @@
+server:
+    command: "php public/index.php"
+    env:
+        - APP_RUNTIME: Runtime\RoadRunnerSymfonyNyholm\Runtime
+
+logs:
+    mode: production
+    level: error
+
+http:
+    address: 127.0.0.1:8002
+    middleware: ["headers", "static", "gzip"]
+    static:
+        dir: "public"
+    headers:
+        response:
+            X-Powered-By: "RoadRunner"
+    pool:
+        num_workers: 2
