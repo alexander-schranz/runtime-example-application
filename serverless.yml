@@ -1,0 +1,23 @@
+service: my-app-name
+
+plugins:
+    - ./vendor/runtime/bref-layer # <----- Add the extra Serverless plugin
+
+provider:
+    name: aws
+    region: eu-central-1
+    runtime: provided.al2
+    memorySize: 1792
+    environment:
+        APP_ENV: prod
+        APP_RUNTIME: Runtime\Bref\Runtime
+        BREF_LOOP_MAX: 100 # Optional
+
+functions:
+    website:
+        handler: public/index.php
+        layers:
+            - ${runtime-bref:php-80}
+        events:
+            # Specify that we want HTTP requests
+            -   httpApi: '*'

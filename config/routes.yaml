@@ -1,0 +1,11 @@
+index:
+    path: /
+    controller: App\Controller\TestController::helloAction
+
+hello:
+    path: /hello
+    controller: App\Controller\TestController::helloAction
+
+test:
+    path: /binary-file
+    controller: App\Controller\TestController::binaryFileAction
